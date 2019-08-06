@@ -1,0 +1,1026 @@
+
+01. Authentication
+02. RefreshToken
+03. SubscribeNotification
+04. RegisterDirectlyConnectedDevice
+05. ModifyDeviceInfo
+06. QueryDeviceActivationStatus
+07. QueryDevices
+08. QueryDeviceCapabilities
+09. QueryDeviceData
+10. QueryDeviceHistoryData
+11. DeleteDirectlyConnectedDevice
+12. PostAsynCommandV4
+13. QueryAsynCommandsV4
+14. UpdateAsynCommandV4
+15. CreateDeviceCmdCancelTaskV4
+16. QueryDeviceCmdCancelTaskV4
+
+
+Authentication.java 
+/*
+
+POST /iocm/app/sec/v1.1.0/login HTTP/1.1
+Content-Length: 70
+Content-Type: application/x-www-form-urlencoded
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+X-Forwarded-For: 185.14.81.247
+
+appId=pAw9********kYSLWbiGI_O6iBUa&secret=****************************
+
+HTTP/1.1 200 OK
+X-Frame-Options: SAMEORIGIN
+X-Server-Process-Time: 1.0789
+m-trace: [2017-05-05 01:27:32,056] urn:uuid:cfaff034-85dc-4181-a1fb-16cacabe1603
+Set-Cookie:**************************************************************************************
+Content-Type: application/json;charset=UTF-8
+X-Upstream-Process-Time: 1.0789
+Date: Fri, 05 May 2017 01:27:33 GMT
+Transfer-Encoding: chunked
+Connection: close
+
+{"accessToken":"********************************","tokenType":"bearer","refreshToken":"********************************","expiresIn":3600,"scope":"default"}
+
+*/
+
+
+RefreshToken.java 
+/*
+    
+POST /iocm/app/sec/v1.1.0/refreshToken HTTP/1.1
+Content-Length: 128
+Content-Type: application/json; charset=UTF-8
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+Cookie:************************************************************
+X-Forwarded-For: 185.14.81.247
+
+{"appId":"pAw9********kYSLWbiGI_O6iBUa","secret":"****************************","refreshToken":"******************************"}
+
+HTTP/1.1 200 OK
+X-Frame-Options: SAMEORIGIN
+X-Server-Process-Time: 0.0659
+m-trace: [2017-05-05 01:27:46,957] urn:uuid:9c7ea8be-d82e-40ae-bde7-d35ff1cf4b1b
+Content-Type: application/json;charset=UTF-8
+X-Upstream-Process-Time: 0.065
+Date: Fri, 05 May 2017 01:27:47 GMT
+Transfer-Encoding: chunked
+Connection: close
+
+{"accessToken":"*****************************","tokenType":"bearer","expiresIn":3600,"scope":"default","refreshToken":"********************************"}
+
+*/
+
+
+SubscribeNotification.java
+/*
+
+POST /iocm/app/sub/v1.1.0/subscribe HTTP/1.1
+Authorization: Bearer ********aee10ef7bf5c6f20d12162
+app_key:*****************************
+Content-Length: 104
+Content-Type: application/json; charset=UTF-8
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+Cookie:************************************************************
+X-Forwarded-For: 185.14.81.247
+
+{"notifyType":"deviceAdded","callbackurl":"***********************************************************"}
+
+HTTP/1.1 201 Created
+X-Frame-Options: SAMEORIGIN
+X-Server-Process-Time: 0.0339
+m-trace: [2017-05-05 01:27:58,566] urn:uuid:ffa500de-c555-4d14-a96f-bf4d41de4ac9
+Content-Type: text/html
+X-Upstream-Process-Time: 0.0329
+Date: Fri, 05 May 2017 01:27:57 GMT
+Transfer-Encoding: chunked
+Connection: close
+
+*/
+
+
+RegisterDirectlyConnectedDevice.java 
+/*
+    
+POST /iocm/app/reg/v1.1.0/devices HTTP/1.1
+Authorization: Bearer ********87129d3f7fbb74839d2dfdb
+app_key:*****************************
+Content-Length: 47
+Content-Type: application/json; charset=UTF-8
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+Cookie:************************************************************
+X-Forwarded-For: 185.14.81.247
+
+{"verifyCode":"***","nodeId":"***","timeout":0}
+
+HTTP/1.1 200 OK
+X-Frame-Options: SAMEORIGIN
+X-Server-Process-Time: 0.065
+m-trace: [2017-05-05 01:28:34,471] urn:uuid:36f16a54-9600-404e-b7db-29aa00b25511
+Content-Type: application/json;charset=UTF-8
+X-Upstream-Process-Time: 0.065
+Date: Fri, 05 May 2017 01:28:34 GMT
+Transfer-Encoding: chunked
+Connection: close
+
+{"deviceId":"eb33bc43************351-1d5c8a885872","verifyCode":"***","timeout":0,"psk":"********************************"}
+
+*/
+
+
+RegisterDirectlyConnectedDevice.java 
+/*
+
+POST /iocm/app/reg/v1.1.0/devices HTTP/1.1
+Authorization: Bearer ********31379e96179088157389d9f7
+app_key:*****************************
+Content-Length: 47
+Content-Type: application/json; charset=UTF-8
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+Cookie:************************************************************
+X-Forwarded-For: 185.14.81.247
+
+{"verifyCode":"***","nodeId":"***","timeout":0}
+
+HTTP/1.1 200 OK
+X-Frame-Options: SAMEORIGIN
+X-Server-Process-Time: 0.0199
+m-trace: [2017-05-05 01:32:26,174] urn:uuid:c6f8caeb-47a5-4369-8e5d-e5c8c38cba5e
+Content-Type: application/json;charset=UTF-8
+X-Upstream-Process-Time: 0.0199
+Date: Fri, 05 May 2017 01:32:25 GMT
+Transfer-Encoding: chunked
+Connection: close
+
+{"deviceId":"9a445dda************e05-ef0f0c1b447a","verifyCode":"***","timeout":0,"psk":"********************************"}
+
+*/
+
+
+ModifyDeviceInfo.java 
+/*
+
+PUT /iocm/app/dm/v1.1.0/devices/9a445dda-f62e-4c78-be05-ef0f0c1b447a HTTP/1.1
+Authorization: Bearer ********303f66e897c848846d3fc1
+app_key:*****************************
+Content-Length: 90
+Content-Type: application/json; charset=UTF-8
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+Cookie:************************************************************
+X-Forwarded-For: 185.14.81.247
+
+{"deviceType":"Wa*****ter","manufacturerName":"sew","manufacturerId":"sew","model":"n001"}
+
+HTTP/1.1 204 No Content
+X-Frame-Options: SAMEORIGIN
+X-Server-Process-Time: 0.0299
+m-trace: [2017-05-05 01:33:18,719] urn:uuid:7c3ad81e-b4f1-4bba-a1f2-50fac1e01822
+Content-Type: text/html
+X-Upstream-Process-Time: 0.0299
+Date: Fri, 05 May 2017 01:33:18 GMT
+Connection: close
+
+*/
+
+
+QueryDeviceActivationStatus.java 
+/*
+
+GET /iocm/app/reg/v1.1.0/devices/9a445dda-f62e-4c78-be05-ef0f0c1b447a HTTP/1.1
+Authorization: Bearer ********2fc54feacb4cea6b18566c34
+app_key:*****************************
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+Cookie:************************************************************
+X-Forwarded-For: 185.14.81.247
+
+HTTP/1.1 200 OK
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=16000000; includeSubDomains; preload;
+X-Server-Process-Time: 0.0069
+X-XSS-Protection: 1; mode=block
+m-trace: [2017-05-05 01:33:50,213] urn:uuid:dedc902e-c11f-45f8-9070-098740ccf4d5
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Security-Policy: default-src 'self'
+X-Upstream-Process-Time: 0.0069
+X-Content-Type-Options: nosniff
+Pragma: no-cache
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Date: Fri, 05 May 2017 01:33:49 GMT
+Transfer-Encoding: chunked
+Connection: close
+
+{"deviceId":"9a445dda************e05-ef0f0c1b447a","activated":false,"name":null}
+
+*/
+
+
+QueryDevices.java 
+/*
+
+GET /iocm/app/dm/v1.3.0/devices?pageNo=0&appId=pAw9x9zinQnQkYSLWbiGI_O6iBUa&pageSize=10 HTTP/1.1
+Authorization: Bearer ********71d9a4376ec24f5de8e48231
+app_key:*****************************
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+Cookie:************************************************************
+X-Forwarded-For: 185.14.81.247
+
+HTTP/1.1 200 OK
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=16000000; includeSubDomains; preload;
+X-Server-Process-Time: 0.009
+X-XSS-Protection: 1; mode=block
+m-trace: [2017-05-05 01:34:12,634] urn:uuid:dbb61aca-a12e-4f87-a8f3-9c842ab7db6b
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Security-Policy: default-src 'self'
+X-Upstream-Process-Time: 0.009
+X-Content-Type-Options: nosniff
+Pragma: no-cache
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Date: Fri, 05 May 2017 01:34:12 GMT
+Transfer-Encoding: chunked
+Connection: close
+
+{
+	"totalCount": 2,
+	"pageNo": 0,
+	"pageSize": 10,
+	"devices": [{
+		"deviceId": "9a445dda************e05-ef0f0c1b447a",
+		"gatewayId": "9a44********e-4c78-be05-ef0f0c1b447a",
+		"nodeType": "GATEWAY",
+		"createTime": "20170505T013226Z",
+		"lastModifiedTime": "20170505T013318Z",
+		"deviceInfo": {
+			"nodeId": null,
+			"name": null,
+			"description": null,
+			"manufacturerId": "sew",
+			"manufacturerName": "sew",
+			"mac": null,
+			"location": null,
+			"deviceType": "Wa*****ter",
+			"model": "n001",
+			"swVersion": null,
+			"fwVersion": null,
+			"hwVersion": null,
+			"protocolType": null,
+			"bridgeId": null,
+			"status": "OFFLINE",
+			"statusDetail": "NOT_ACTIVE",
+			"mute": null,
+			"supportedSecurity": null,
+			"isSecurity": null,
+			"signalStrength": null,
+			"sigVersion": null,
+			"serialNumber": null,
+			"batteryLevel": null
+		},
+		"services": null,
+		"connectionInfo": {
+			"protocolType": null
+		},
+		"location": null,
+		"devGroupIds": []
+	},
+	{
+		"deviceId": "eb33bc43************351-1d5c8a885872",
+		"gatewayId": "eb33********8-40b8-9351-1d5c8a885872",
+		"nodeType": "GATEWAY",
+		"createTime": "20170505T012834Z",
+		"lastModifiedTime": "20170505T012834Z",
+		"deviceInfo": {
+			"nodeId": null,
+			"name": null,
+			"description": null,
+			"manufacturerId": null,
+			"manufacturerName": null,
+			"mac": null,
+			"location": null,
+			"deviceType": null,
+			"model": null,
+			"swVersion": null,
+			"fwVersion": null,
+			"hwVersion": null,
+			"protocolType": null,
+			"bridgeId": null,
+			"status": "OFFLINE",
+			"statusDetail": "NOT_ACTIVE",
+			"mute": null,
+			"supportedSecurity": null,
+			"isSecurity": null,
+			"signalStrength": null,
+			"sigVersion": null,
+			"serialNumber": null,
+			"batteryLevel": null
+		},
+		"services": null,
+		"connectionInfo": {
+			"protocolType": null
+		},
+		"location": null,
+		"devGroupIds": []
+	}]
+}
+
+*/
+
+
+QueryDeviceCapabilities.java 
+/*
+
+GET /iocm/app/data/v1.1.0/deviceCapabilities?deviceId=9a445dda-f62e-4c78-be05-ef0f0c1b447a&gatewayId=9a445dda-f62e-4c78-be05-ef0f0c1b447a HTTP/1.1
+Authorization: Bearer ********d25de1ac710e8f4cac4c1a4
+app_key:*****************************
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+Cookie:************************************************************
+X-Forwarded-For: 185.14.81.247
+
+HTTP/1.1 200 OK
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=16000000; includeSubDomains; preload;
+X-Server-Process-Time: 0.0309
+X-XSS-Protection: 1; mode=block
+m-trace: [2017-05-05 01:34:49,159] urn:uuid:e1bfdb1d-427e-4413-8bf4-f481639816cd
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Security-Policy: default-src 'self'
+X-Upstream-Process-Time: 0.0299
+X-Content-Type-Options: nosniff
+Pragma: no-cache
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Date: Fri, 05 May 2017 01:34:48 GMT
+Transfer-Encoding: chunked
+Connection: close
+
+{
+	"deviceCapabilities": [{
+		"deviceId": "9a445dda************e05-ef0f0c1b447a",
+		"serviceCapabilities": [{
+			"serviceId": "Wa*****ter",
+			"serviceType": "WaterMeter",
+			"option": "Master",
+			"description": null,
+			"commands": null,
+			"properties": [{
+				"propertyName": "alarmType",
+				"dataType": "long",
+				"required": true,
+				"min": "0.0",
+				"max": "0.0",
+				"step": 0.0,
+				"maxLength": 0,
+				"method": "**",
+				"unit": null,
+				"enumList": null
+			},
+			{
+				"propertyName": "swVersion",
+				"dataType": "string",
+				"required": true,
+				"min": "0.0",
+				"max": "0.0",
+				"step": 0.0,
+				"maxLength": 0,
+				"method": "**",
+				"unit": null,
+				"enumList": null
+			},
+			{
+				"propertyName": "signalIntensity",
+				"dataType": "int",
+				"required": true,
+				"min": "0.0",
+				"max": "0.0",
+				"step": 0.0,
+				"maxLength": 0,
+				"method": "**",
+				"unit": null,
+				"enumList": null
+			},
+			{
+				"propertyName": "eventTime",
+				"dataType": "string",
+				"required": true,
+				"min": "0.0",
+				"max": "0.0",
+				"step": 0.0,
+				"maxLength": 0,
+				"method": "**",
+				"unit": "s",
+				"enumList": null
+			},
+			{
+				"propertyName": "externData",
+				"dataType": "jsonObject",
+				"required": true,
+				"min": "0.0",
+				"max": "0.0",
+				"step": 0.0,
+				"maxLength": 0,
+				"method": "**",
+				"unit": null,
+				"enumList": null
+			},
+			{
+				"propertyName": "fwVersion",
+				"dataType": "string",
+				"required": true,
+				"min": "0.0",
+				"max": "0.0",
+				"step": 0.0,
+				"maxLength": 0,
+				"method": "**",
+				"unit": null,
+				"enumList": null
+			},
+			{
+				"propertyName": "imsi",
+				"dataType": "string",
+				"required": true,
+				"min": "0.0",
+				"max": "0.0",
+				"step": 0.0,
+				"maxLength": 0,
+				"method": "**",
+				"unit": null,
+				"enumList": null
+			},
+			{
+				"propertyName": "totalizedFlow",
+				"dataType": "int",
+				"required": true,
+				"min": "0.0",
+				"max": "0.0",
+				"step": 0.0,
+				"maxLength": 0,
+				"method": "**",
+				"unit": "L",
+				"enumList": null
+			},
+			{
+				"propertyName": "cellVoltage",
+				"dataType": "int",
+				"required": true,
+				"min": "0.0",
+				"max": "0.0",
+				"step": 0.0,
+				"maxLength": 0,
+				"method": "**",
+				"unit": "V",
+				"enumList": null
+			}]
+		}]
+	}]
+}
+
+*/
+
+
+QueryDeviceData.java 
+/*
+
+GET /iocm/app/dm/v1.1.0/devices/9a445dda-f62e-4c78-be05-ef0f0c1b447a?appId=pAw9x9zinQnQkYSLWbiGI_O6iBUa HTTP/1.1
+Authorization: Bearer ********ab6add2f999ec86b44177093
+app_key:*****************************
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+Cookie:************************************************************
+X-Forwarded-For: 185.14.81.247
+
+HTTP/1.1 200 OK
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=16000000; includeSubDomains; preload;
+X-Server-Process-Time: 0.009
+X-XSS-Protection: 1; mode=block
+m-trace: [2017-05-05 01:35:08,902] urn:uuid:b3812c1c-ec7d-43aa-892d-15429b4d2830
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Security-Policy: default-src 'self'
+X-Upstream-Process-Time: 0.008
+X-Content-Type-Options: nosniff
+Pragma: no-cache
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Date: Fri, 05 May 2017 01:35:08 GMT
+Transfer-Encoding: chunked
+Connection: close
+
+{
+	"deviceId": "9a445dda************e05-ef0f0c1b447a",
+	"gatewayId": "9a44********e-4c78-be05-ef0f0c1b447a",
+	"nodeType": "GATEWAY",
+	"createTime": "20170505T013226Z",
+	"lastModifiedTime": "20170505T013318Z",
+	"deviceInfo": {
+		"nodeId": null,
+		"name": null,
+		"description": null,
+		"manufacturerId": "sew",
+		"manufacturerName": "sew",
+		"mac": null,
+		"location": null,
+		"deviceType": "Wa*****ter",
+		"model": "n001",
+		"swVersion": null,
+		"fwVersion": null,
+		"hwVersion": null,
+		"protocolType": null,
+		"bridgeId": null,
+		"status": "OFFLINE",
+		"statusDetail": "NOT_ACTIVE",
+		"mute": null,
+		"supportedSecurity": null,
+		"isSecurity": null,
+		"signalStrength": null,
+		"sigVersion": null,
+		"serialNumber": null,
+		"batteryLevel": null
+	},
+	"services": null
+}
+
+*/
+
+
+QueryDeviceHistoryData.java 
+/*
+
+GET /iocm/app/data/v1.1.0/deviceDataHistory?deviceId=9a445dda-f62e-4c78-be05-ef0f0c1b447a&gatewayId=9a445dda-f62e-4c78-be05-ef0f0c1b447a HTTP/1.1
+Authorization: Bearer ********cc85b12a54cc14abe2ddded9
+app_key:*****************************
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+Cookie:************************************************************
+X-Forwarded-For: 185.14.81.247
+
+HTTP/1.1 200 OK
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=16000000; includeSubDomains; preload;
+X-Server-Process-Time: 0.013
+X-XSS-Protection: 1; mode=block
+m-trace: [2017-05-05 01:35:33,224] urn:uuid:db7e68dc-8425-4346-93f4-7245bbf30024
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Security-Policy: default-src 'self'
+X-Upstream-Process-Time: 0.013
+X-Content-Type-Options: nosniff
+Pragma: no-cache
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Date: Fri, 05 May 2017 01:35:32 GMT
+Transfer-Encoding: chunked
+Connection: close
+
+{"totalCount":0,"pageNo":0,"pageSize":0,"deviceDataHistoryDTOs":[]}
+
+*/
+
+
+DeleteDirectlyConnectedDevice.java 
+/*
+
+DELETE /iocm/app/dm/v1.1.0/devices/eb33bc43-ee78-40b8-9351-1d5c8a885872 HTTP/1.1
+Authorization: Bearer ********ead2337ff56f59d328721b71
+app_key:*****************************
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+Cookie:************************************************************
+X-Forwarded-For: 185.14.81.247
+
+HTTP/1.1 204 No Content
+X-Frame-Options: SAMEORIGIN
+X-Server-Process-Time: 0.0629
+m-trace: [2017-05-05 01:36:09,175] urn:uuid:a0ceec16-b4b1-447d-8709-914a3a2cb77b
+Content-Type: text/html
+X-Upstream-Process-Time: 0.0629
+Date: Fri, 05 May 2017 01:36:08 GMT
+Connection: close
+
+*/
+
+
+PostAsynCommandV4.java
+/*
+
+POST /iocm/app/cmd/v1.4.0/deviceCommands HTTP/1.1
+Authorization: Bearer ********9dcfc8554d0f19f1da0e7
+app_key:*****************************
+Content-Length: 235
+Content-Type: application/json; charset=UTF-8
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+Cookie:************************************************************
+X-Forwarded-For: 185.14.81.247
+
+{
+	"callbackUrl": "http://192.88.88.88:9999/na/iocm/devNotify/v1.1.0/reportCmdExecResult",
+	"deviceId": "8c23b6b4************c2f-90452a81ebb1",
+	"command": {
+		"method": "SET_****ERATURE_READ_PERIOD",
+		"paras": {
+			"value": "8"
+		},
+		"serviceId": "Wa*****ter"
+	}
+}
+
+HTTP/1.1 201 Created
+X-Frame-Options: SAMEORIGIN
+X-Server-Process-Time: 0.1389
+m-trace: [2017-05-05 09:47:45,478] urn:uuid:bf688656-0f4b-4136-89ce-a98c44919ce1
+Content-Type: application/json;charset=UTF-8
+X-Upstream-Process-Time: 0.1389
+Date: Fri, 05 May 2017 09:47:45 GMT
+Transfer-Encoding: chunked
+Connection: close
+
+{
+	"commandId": "********************************",
+	"appId": "pAw9********kYSLWbiGI_O6iBUa",
+	"deviceId": "8c23b6b4************c2f-90452a81ebb1",
+	"command": {
+		"serviceId": "Wa*****ter",
+		"method": "SET_****ERATURE_READ_PERIOD",
+		"paras": {
+			"value": "8"
+		}
+	},
+	"callbackUrl": "http://192.88.88.88:9999/na/iocm/devNotify/v1.1.0/reportCmdExecResult",
+	"expireTime": null,
+	"status": "DEFAULT",
+	"result": null,
+	"creationTime": "20170505T094745Z",
+	"executeTime": null,
+	"platformIssuedTime": null,
+	"deliveredTime": null,
+	"issuedTimes": 0
+}
+
+*/
+
+
+QueryAsynCommandsV4.java
+/*
+
+GET /iocm/app/cmd/v1.4.0/deviceCommands HTTP/1.1
+Authorization: Bearer ********92b5e5e4cce365749d72fcbd
+app_key:*****************************
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+Cookie:************************************************************
+X-Forwarded-For: 185.14.81.247
+
+HTTP/1.1 200 OK
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=16000000; includeSubDomains; preload;
+X-Server-Process-Time: 0.0079
+X-XSS-Protection: 1; mode=block
+m-trace: [2017-05-05 09:49:47,584] urn:uuid:e7761715-4e7a-4474-b5c3-2be805b823b9
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Security-Policy: default-src 'self'
+X-Upstream-Process-Time: 0.0079
+X-Content-Type-Options: nosniff
+Pragma: no-cache
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Date: Fri, 05 May 2017 09:49:47 GMT
+Transfer-Encoding: chunked
+Connection: close
+
+{
+	"pagination": {
+		"pageNo": 0,
+		"pageSize": 1000,
+		"totalSize": 4
+	},
+	"data": [{
+		"commandId": "********************************",
+		"appId": "pAw9********kYSLWbiGI_O6iBUa",
+		"deviceId": "8c23b6b4************c2f-90452a81ebb1",
+		"command": {
+			"serviceId": "Wa*****ter",
+			"method": "SET_****ERATURE_READ_PERIOD",
+			"paras": {
+				"value": "12"
+			}
+		},
+		"callbackUrl": "http://192.88.88.88:9999/na/iocm/devNotify/v1.1.0/reportCmdExecResult",
+		"expireTime": null,
+		"status": "PENDING",
+		"result": null,
+		"creationTime": "20170505T094818Z",
+		"executeTime": null,
+		"platformIssuedTime": null,
+		"deliveredTime": null,
+		"issuedTimes": 0
+	},
+	{
+		"commandId": "********************************",
+		"appId": "pAw9********kYSLWbiGI_O6iBUa",
+		"deviceId": "8c23b6b4************c2f-90452a81ebb1",
+		"command": {
+			"serviceId": "Wa*****ter",
+			"method": "SET_****ERATURE_READ_PERIOD",
+			"paras": {
+				"value": "12"
+			}
+		},
+		"callbackUrl": "http://192.88.88.88:9999/na/iocm/devNotify/v1.1.0/reportCmdExecResult",
+		"expireTime": null,
+		"status": "PENDING",
+		"result": null,
+		"creationTime": "20170505T094803Z",
+		"executeTime": null,
+		"platformIssuedTime": null,
+		"deliveredTime": null,
+		"issuedTimes": 0
+	},
+	{
+		"commandId": "********************************",
+		"appId": "pAw9********kYSLWbiGI_O6iBUa",
+		"deviceId": "8c23b6b4************c2f-90452a81ebb1",
+		"command": {
+			"serviceId": "Wa*****ter",
+			"method": "SET_****ERATURE_READ_PERIOD",
+			"paras": {
+				"value": "8"
+			}
+		},
+		"callbackUrl": "http://192.88.88.88:9999/na/iocm/devNotify/v1.1.0/reportCmdExecResult",
+		"expireTime": null,
+		"status": "PENDING",
+		"result": null,
+		"creationTime": "20170505T094745Z",
+		"executeTime": null,
+		"platformIssuedTime": null,
+		"deliveredTime": null,
+		"issuedTimes": 0
+	},
+	{
+		"commandId": "********************************",
+		"appId": "pAw9********kYSLWbiGI_O6iBUa",
+		"deviceId": "8c23b6b4************c2f-90452a81ebb1",
+		"command": {
+			"serviceId": "Wa*****ter",
+			"method": "SET_****ERATURE_READ_PERIOD",
+			"paras": {
+				"value": "4"
+			}
+		},
+		"callbackUrl": "http://192.88.88.88:9999/na/iocm/devNotify/v1.1.0/reportCmdExecResult",
+		"expireTime": null,
+		"status": "FAILED",
+		"result": null,
+		"creationTime": "20170505T094727Z",
+		"executeTime": null,
+		"platformIssuedTime": null,
+		"deliveredTime": null,
+		"issuedTimes": 0
+	}]
+}
+
+
+
+
+*/
+
+
+UpdateAsynCommandV4.java
+/*
+PUT /iocm/app/cmd/v1.4.0/deviceCommands/cdb68dcfc4614ffe914f5605c55a4828 HTTP/1.1
+Authorization: Bearer ********4c15b9c579fae44660bd3d53
+app_key:*****************************
+Content-Length: 21
+Content-Type: application/json; charset=UTF-8
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+Cookie:************************************************************
+X-Forwarded-For: 185.14.81.247
+
+{"status":"CANCELED"}HTTP/1.1 200 OK
+X-Frame-Options: SAMEORIGIN
+X-Server-Process-Time: 0.012
+m-trace: [2017-05-05 09:51:17,536] urn:uuid:83485a82-8118-434c-8811-8ce5944a8f39
+Content-Type: application/json;charset=UTF-8
+X-Upstream-Process-Time: 0.0109
+Date: Fri, 05 May 2017 09:51:17 GMT
+Transfer-Encoding: chunked
+Connection: close
+
+{
+	"commandId": "********************************",
+	"appId": "pAw9********kYSLWbiGI_O6iBUa",
+	"deviceId": "8c23b6b4************c2f-90452a81ebb1",
+	"command": {
+		"serviceId": "Wa*****ter",
+		"method": "SET_****ERATURE_READ_PERIOD",
+		"paras": {
+			"value": "8"
+		}
+	},
+	"callbackUrl": "http://192.88.88.88:9999/na/iocm/devNotify/v1.1.0/reportCmdExecResult",
+	"expireTime": null,
+	"status": "CANCELED",
+	"result": null,
+	"creationTime": "20170505T094745Z",
+	"executeTime": null,
+	"platformIssuedTime": null,
+	"deliveredTime": null,
+	"issuedTimes": 0
+}
+
+*/
+
+
+CreateDeviceCmdCancelTaskV4.java
+/*
+
+POST /iocm/app/cmd/v1.4.0/deviceCommandCancelTasks HTTP/1.1
+Authorization: Bearer ********a8cd5a874891f90df43a443
+app_key:*****************************
+Content-Length: 51
+Content-Type: application/json; charset=UTF-8
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+Cookie:************************************************************
+X-Forwarded-For: 185.14.81.247
+
+{"deviceId":"8c23b6b4************c2f-90452a81ebb1"}HTTP/1.1 201 Created
+X-Frame-Options: SAMEORIGIN
+X-Server-Process-Time: 0.0099
+m-trace: [2017-05-05 09:51:35,226] urn:uuid:ff07bc50-cf85-4eb2-a04c-081ba2d705b3
+Content-Type: application/json;charset=UTF-8
+X-Upstream-Process-Time: 0.0099
+Date: Fri, 05 May 2017 09:51:35 GMT
+Transfer-Encoding: chunked
+Connection: close
+
+{
+	"taskId": "********************************",
+	"appId": "pAw9********kYSLWbiGI_O6iBUa",
+	"deviceId": "8c23b6b4************c2f-90452a81ebb1",
+	"status": "RUNNING",
+	"totalCount": 2,
+	"deviceCommands": [{
+		"commandId": "********************************",
+		"appId": "pAw9********kYSLWbiGI_O6iBUa",
+		"deviceId": "8c23b6b4************c2f-90452a81ebb1",
+		"command": {
+			"serviceId": "Wa*****ter",
+			"method": "SET_****ERATURE_READ_PERIOD",
+			"paras": {
+				"value": "12"
+			}
+		},
+		"callbackUrl": "http://192.88.88.88:9999/na/iocm/devNotify/v1.1.0/reportCmdExecResult",
+		"expireTime": null,
+		"status": "PENDING",
+		"result": null,
+		"creationTime": "20170505T094818Z",
+		"executeTime": null,
+		"platformIssuedTime": null,
+		"deliveredTime": null,
+		"issuedTimes": 0
+	},
+	{
+		"commandId": "********************************",
+		"appId": "pAw9********kYSLWbiGI_O6iBUa",
+		"deviceId": "8c23b6b4************c2f-90452a81ebb1",
+		"command": {
+			"serviceId": "Wa*****ter",
+			"method": "SET_****ERATURE_READ_PERIOD",
+			"paras": {
+				"value": "12"
+			}
+		},
+		"callbackUrl": "http://192.88.88.88:9999/na/iocm/devNotify/v1.1.0/reportCmdExecResult",
+		"expireTime": null,
+		"status": "PENDING",
+		"result": null,
+		"creationTime": "20170505T094803Z",
+		"executeTime": null,
+		"platformIssuedTime": null,
+		"deliveredTime": null,
+		"issuedTimes": 0
+	}]
+}
+
+*/
+
+
+QueryDeviceCmdCancelTaskV4.java
+/*
+
+GET /iocm/app/cmd/v1.4.0/deviceCommandCancelTasks HTTP/1.1
+Authorization: Bearer ********40ac23712ca6b75c55862b
+app_key:*****************************
+Host: 183.1.3.120:8743
+User-Agent:****************************************
+Cookie:************************************************************
+X-Forwarded-For: 185.14.81.247
+
+HTTP/1.1 200 OK
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=16000000; includeSubDomains; preload;
+X-Server-Process-Time: 0.009
+X-XSS-Protection: 1; mode=block
+m-trace: [2017-05-05 09:51:54,673] urn:uuid:17ea1b14-ca3a-4a19-85da-37d01a76a47b
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Security-Policy: default-src 'self'
+X-Upstream-Process-Time: 0.009
+X-Content-Type-Options: nosniff
+Pragma: no-cache
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Date: Fri, 05 May 2017 09:51:53 GMT
+Transfer-Encoding: chunked
+Connection: close
+
+{
+	"pagination": {
+		"pageNo": 0,
+		"pageSize": 1000,
+		"totalSize": 3
+	},
+	"data": [{
+		"taskId": "********************************",
+		"appId": "pAw9********kYSLWbiGI_O6iBUa",
+		"deviceId": "8c23b6b4************c2f-90452a81ebb1",
+		"status": "FAILED",
+		"totalCount": 0,
+		"deviceCommands": []
+	},
+	{
+		"taskId": "********************************",
+		"appId": "pAw9********kYSLWbiGI_O6iBUa",
+		"deviceId": "8c23b6b4************c2f-90452a81ebb1",
+		"status": "SUCCESS",
+		"totalCount": 2,
+		"deviceCommands": []
+	},
+	{
+		"taskId": "********************************",
+		"appId": "pAw9********kYSLWbiGI_O6iBUa",
+		"deviceId": "8c23b6b4************c2f-90452a81ebb1",
+		"status": "SUCCESS",
+		"totalCount": 2,
+		"deviceCommands": [{
+			"commandId": "********************************",
+			"appId": "pAw9********kYSLWbiGI_O6iBUa",
+			"deviceId": "8c23b6b4************c2f-90452a81ebb1",
+			"command": {
+				"serviceId": "Wa*****ter",
+				"method": "SET_****ERATURE_READ_PERIOD",
+				"paras": {
+					"value": "12"
+				}
+			},
+			"callbackUrl": "http://192.88.88.88:9999/na/iocm/devNotify/v1.1.0/reportCmdExecResult",
+			"expireTime": null,
+			"status": "CANCELED",
+			"result": null,
+			"creationTime": "20170505T094818Z",
+			"executeTime": null,
+			"platformIssuedTime": null,
+			"deliveredTime": null,
+			"issuedTimes": 0
+		},
+		{
+			"commandId": "********************************",
+			"appId": "pAw9********kYSLWbiGI_O6iBUa",
+			"deviceId": "8c23b6b4************c2f-90452a81ebb1",
+			"command": {
+				"serviceId": "Wa*****ter",
+				"method": "SET_****ERATURE_READ_PERIOD",
+				"paras": {
+					"value": "12"
+				}
+			},
+			"callbackUrl": "http://192.88.88.88:9999/na/iocm/devNotify/v1.1.0/reportCmdExecResult",
+			"expireTime": null,
+			"status": "CANCELED",
+			"result": null,
+			"creationTime": "20170505T094803Z",
+			"executeTime": null,
+			"platformIssuedTime": null,
+			"deliveredTime": null,
+			"issuedTimes": 0
+		}]
+	}]
+}
+
+*/
+
+
+
+
+
+

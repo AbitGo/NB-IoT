@@ -1,0 +1,317 @@
+{
+	"appId": "0",
+	"manufacturerId": "Huawei",
+	"manufacturerName": "Huawei",
+	"model": "HS3025",
+	"protocolType": "HuaweiM2M",
+	"deviceType": "Gateway",
+	"icon": null,
+	"omCapability": {
+		"upgradeCapability": {
+			"supportUpgrade": false
+		},
+		"fwUpgradeCapability": {
+			"supportUpgrade": false
+		},
+		"configCapability": {
+			"supportConfig": true
+		}
+	},
+	"serviceCapabilities": [{
+		"serviceId": "Discovery",
+		"serviceType": "Discovery",
+		"option": "Mandatory",
+		"description": null,
+		"commands": [{
+			"commandName": "DISCOVERY",
+			"paras": [{
+				"paraName": "protocolType",
+				"dataType": "string",
+				"required": false,
+				"enumList": ["Z-Wave","ONVIF","WPS","ZigBee"],
+				"min": 0,
+				"max": 0,
+				"step": 0,
+				"maxLength": 12,
+				"unit": null
+			},
+			{
+				"paraName": "mode",
+				"dataType": "string",
+				"required": false,
+				"enumList": ["ON","OFF"],
+				"min": 0,
+				"max": 0,
+				"step": 0,
+				"maxLength": 12,
+				"unit": null
+			},
+			{
+				"paraName": "timeout",
+				"dataType": "int",
+				"required": false,
+				"enumList": null,
+				"min": 0,
+				"max": 3600,
+				"step": 0,
+				"maxLength": 0,
+				"unit": null
+			}],
+			"responses": null
+		}],
+		"properties": [],
+		"events": null
+	},
+	{
+		"serviceId": "Remover",
+		"serviceType": "Remover",
+		"option": "Mandatory",
+		"description": null,
+		"commands": [{
+			"commandName": "REMOVE",
+			"paras": [{
+				"paraName": "deviceId",
+				"dataType": "string",
+				"required": false,
+				"enumList": null,
+				"min": 0,
+				"max": 0,
+				"step": 0,
+				"maxLength": 36,
+				"unit": null
+			},
+			{
+				"paraName": "mode",
+				"dataType": "string",
+				"required": true,
+				"enumList": ["ON","OFF"],
+				"min": 0,
+				"max": 0,
+				"step": 0,
+				"maxLength": 0,
+				"unit": null
+			},
+			{
+				"paraName": "timeout",
+				"dataType": "int",
+				"required": false,
+				"enumList": null,
+				"min": 0,
+				"max": 3600,
+				"step": 0,
+				"maxLength": 0,
+				"unit": null
+			}],
+			"responses": null
+		},
+		{
+			"commandName": "REMOVE_FAILED_DEVICE",
+			"paras": [{
+				"paraName": "deviceId",
+				"dataType": "string",
+				"required": true,
+				"enumList": null,
+				"min": 0,
+				"max": 0,
+				"step": 0,
+				"maxLength": 36,
+				"unit": null
+			}],
+			"responses": null
+		}],
+		"properties": [],
+		"events": null
+	},
+	{
+		"serviceId": "DM",
+		"serviceType": "DM",
+		"option": "Mandatory",
+		"description": null,
+		"commands": [{
+			"commandName": "REMOVE_GATEWAY",
+			"paras": [],
+			"responses": null
+		},
+		{
+			"commandName": "UPDATE_CONFIGURATION",
+			"paras": [],
+			"responses": null
+		},
+		{
+			"commandName": "COLLECT_LOG",
+			"paras": [],
+			"responses": null
+		},
+		{
+			"commandName": "UPGRADE_BUNDLE",
+			"paras": [],
+			"responses": null
+		},
+		{
+			"commandName": "INSTALL_BUNDLE",
+			"paras": [],
+			"responses": null
+		},
+		{
+			"commandName": "START_BUNDLE",
+			"paras": [],
+			"responses": null
+		},
+		{
+			"commandName": "STOP_BUNDLE",
+			"paras": [],
+			"responses": null
+		},
+		{
+			"commandName": "UNINSTALL_BUNDLE",
+			"paras": [],
+			"responses": null
+		},
+		{
+			"commandName": "BUNDLE_SYNCHRONIZATION",
+			"paras": [],
+			"responses": null
+		},
+		{
+			"commandName": "PUSH_COMMAND",
+			"paras": [],
+			"responses": null
+		},
+		{
+			"commandName": "UPGRADE_FIRMWARE",
+			"paras": [],
+			"responses": null
+		}],
+		"properties": [],
+		"events": null
+	},
+	{
+		"serviceId": "Check",
+		"serviceType": "Check",
+		"option": "Mandatory",
+		"description": null,
+		"commands": [{
+			"commandName": "CHECK_ONLINE_STATUS",
+			"paras": [{
+				"paraName": "deviceId",
+				"dataType": "string",
+				"required": true,
+				"enumList": null,
+				"min": 0,
+				"max": 0,
+				"step": 0,
+				"maxLength": 36,
+				"unit": null
+			},
+			{
+				"paraName": "timeout",
+				"dataType": "int",
+				"required": false,
+				"enumList": null,
+				"min": 0,
+				"max": 3600,
+				"step": 0,
+				"maxLength": 0,
+				"unit": null
+			}],
+			"responses": null
+		}],
+		"properties": [],
+		"events": null
+	},
+	{
+		"serviceId": "SetLearnMode",
+		"serviceType": "SetLearnMode",
+		"option": "Mandatory",
+		"description": null,
+		"commands": [{
+			"commandName": "SET_LEARN_MODE",
+			"paras": [],
+			"responses": null
+		}],
+		"properties": [],
+		"events": null
+	},
+	{
+		"serviceId": "ReplaceNode",
+		"serviceType": "ReplaceNode",
+		"option": "Mandatory",
+		"description": null,
+		"commands": [{
+			"commandName": "REPLACE_NODE",
+			"paras": [{
+				"paraName": "timeout",
+				"dataType": "int",
+				"required": false,
+				"enumList": null,
+				"min": 0,
+				"max": 3600,
+				"step": 0,
+				"maxLength": 0,
+				"unit": null
+			}],
+			"responses": null
+		}],
+		"properties": [],
+		"events": null
+	},
+	{
+		"serviceId": "SendNodeInfo",
+		"serviceType": "SendNodeInfo",
+		"option": "Mandatory",
+		"description": null,
+		"commands": [{
+			"commandName": "SEND_NODE_INFO",
+			"paras": [],
+			"responses": null
+		}],
+		"properties": [],
+		"events": null
+	},
+	{
+		"serviceId": "ResetZwave",
+		"serviceType": "ResetZwave",
+		"option": "Mandatory",
+		"description": null,
+		"commands": [{
+			"commandName": "RESET_ZWAVE",
+			"paras": [],
+			"responses": null
+		}],
+		"properties": [],
+		"events": null
+	},
+	{
+		"serviceId": "Storage",
+		"serviceType": "Storage",
+		"option": "Mandatory",
+		"description": null,
+		"commands": null,
+		"properties": [{
+			"propertyName": "usedPercent",
+			"dataType": "int",
+			"required": "TRUE",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"maxLength": 0,
+			"method": "RE",
+			"unit": null,
+			"enumList": null
+		}],
+		"events": [{
+			"eventType": "INSUFFICIENT_STORAGE",
+			"paras": [{
+				"paraName": "usedPercent",
+				"dataType": "int",
+				"required": false,
+				"enumList": null,
+				"min": 0,
+				"max": 100,
+				"step": 0,
+				"maxLength": 0,
+				"unit": null
+			}]
+		}]
+	}]
+}
