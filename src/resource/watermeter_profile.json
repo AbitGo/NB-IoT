@@ -1,0 +1,161 @@
+{
+    "appId" : "0",
+    "manufacturerId" : "LiteNAdemo",
+    "manufacturerName" : "LiteNAdemo",
+    "model" : "demo130",
+    "protocolType" : "CoAP",
+    "deviceType" : "WaterMeter",
+    "icon": null,
+    "omCapability":{
+        "upgradeCapability" : {
+            "supportUpgrade":false
+        },
+        "fwUpgradeCapability" : {
+            "supportUpgrade":true,
+            "upgradeProtocolType":"LWM2M",
+            "downloadProtocolType":"CoAP"
+        }
+    },
+    "serviceCapabilities" : [ {
+        "serviceId" : "WaterMeter",
+        "serviceType" : "WaterMeter",
+        "option" : "Master",
+        "description" : null,
+        "commands" : [
+            {
+                "commandName": "SET_TEMPERATURE_READ_PERIOD",
+                "paras": [
+                    {
+                        "paraName": "value",
+                        "dataType": "int",
+                        "required": true,
+                        "min": 1,
+                        "max": 24,
+                        "step": 1,
+                        "maxLength": 10,
+                        "unit": "hour",
+                        "enumList": null
+                    }
+                ],
+                "responses": [
+                    {
+                        "responseName": "SET_TEMPERATURE_READ_PERIOD_RSP",
+                        "paras": [
+                            {
+                                "paraName": "result",
+                                "dataType": "int",
+                                "required": true,
+                                "min": -1000000,
+                                "max": 1000000,
+                                "step": 1,
+                                "maxLength": 10,
+                                "unit": null,
+                                "enumList": null
+                            }
+                        ]
+                    }
+                ]
+            }],
+        "properties" : [ {
+            "propertyName" : "alarmType",
+            "dataType" : "long",
+            "enumList" : null,
+            "min" : 0,
+            "max" : 0,
+            "step" : 0.0,
+            "maxLength" : 0,
+            "unit" : null,
+            "method" : "RE",
+            "required" : true
+        }, {
+            "propertyName" : "swVersion",
+            "dataType" : "string",
+            "enumList" : null,
+            "min" : 0,
+            "max" : 0,
+            "step" : 0.0,
+            "maxLength" : 0,
+            "unit" : null,
+            "method" : "RE",
+            "required" : true
+        }, {
+            "propertyName" : "signalIntensity",
+            "dataType" : "int",
+            "enumList" : null,
+            "min" : 0,
+            "max" : 0,
+            "step" : 0.0,
+            "maxLength" : 0,
+            "unit" : null,
+            "method" : "RE",
+            "required" : true
+        }, {
+            "propertyName" : "eventTime",
+            "dataType" : "string",
+            "enumList" : null,
+            "min" : 0,
+            "max" : 0,
+            "step" : 0.0,
+            "maxLength" : 0,
+            "unit" : "s",
+            "method" : "RE",
+            "required" : true
+        }, {
+            "propertyName" : "externData",
+            "dataType" : "jsonObject",
+            "enumList" : null,
+            "min" : 0,
+            "max" : 0,
+            "step" : 0.0,
+            "maxLength" : 0,
+            "unit" : null,
+            "method" : "RE",
+            "required" : true
+        }, {
+            "propertyName" : "fwVersion",
+            "dataType" : "string",
+            "enumList" : null,
+            "min" : 0,
+            "max" : 0,
+            "step" : 0.0,
+            "maxLength" : 0,
+            "unit" : null,
+            "method" : "RE",
+            "required" : true
+        }, {
+            "propertyName" : "imsi",
+            "dataType" : "string",
+            "enumList" : null,
+            "min" : 0,
+            "max" : 0,
+            "step" : 0.0,
+            "maxLength" : 0,
+            "unit" : null,
+            "method" : "RE",
+            "required" : true
+        }, {
+            "propertyName" : "totalizedFlow",
+            "dataType" : "int",
+            "enumList" : null,
+            "min" : 0,
+            "max" : 0,
+            "step" : 0.0,
+            "maxLength" : 0,
+            "unit" : "L",
+            "method" : "RE",
+            "required" : true
+        }, {
+            "propertyName" : "cellVoltage",
+            "dataType" : "int",
+            "enumList" : null,
+            "min" : 0,
+            "max" : 0,
+            "step" : 0.0,
+            "maxLength" : 0,
+            "unit" : "V",
+            "method" : "RE",
+            "required" : true
+        } ],
+        "events" : null
+    } ]
+}
